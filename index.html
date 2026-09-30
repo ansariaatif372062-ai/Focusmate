@@ -1,196 +1,1964 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#06112d">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#061535">
 <title>FocusMate — Focus • Grow • Together</title>
+
 <style>
-:root{--bg:#030b20;--panel:#071735;--panel2:#0a2047;--line:#284e9d;--text:#f7f9ff;--muted:#91a4cf;--purple:#b64cff;--blue:#25b8ff;--pink:#ff62bb;--cyan:#43e7ff;--green:#45e39a;--gold:#ffc857}
-*{box-sizing:border-box}body{margin:0;background:#020817;color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
-button,input{font:inherit}button{cursor:pointer;border:0;color:#fff}.app{min-height:100vh;background:
-radial-gradient(circle at 18% 10%,#5630b8 0,transparent 27%),
-radial-gradient(circle at 88% 18%,#005ed4 0,transparent 25%),
-radial-gradient(circle at 50% 110%,#7b1fc2 0,transparent 35%),
-linear-gradient(145deg,#02081c,#071a42 52%,#02081c);overflow:hidden}
-.phone{width:min(100%,480px);margin:auto;min-height:100vh;position:relative;background:
-radial-gradient(circle at 100% 0,#123d91 0,transparent 26%),linear-gradient(180deg,rgba(4,14,40,.94),rgba(2,9,27,.98));box-shadow:0 0 80px #172d6d66}
-.screen{display:none;padding:22px 18px 100px;min-height:100vh}.screen.active{display:block}.center{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px}
-.logo{width:76px;height:76px;border-radius:24px;background:linear-gradient(135deg,#24b8ff,#8a4dff 55%,#ff4cc7);display:grid;place-items:center;font-size:39px;font-weight:900;box-shadow:0 0 35px #875cff88;margin-bottom:18px}.brand{font-size:30px;font-weight:850;letter-spacing:-1px}.brand span{color:#55baff}.tag{color:#b9c8e8;margin-top:6px}.loader{width:180px;height:5px;border-radius:9px;background:#18345e;margin-top:44px;overflow:hidden}.loader i{display:block;width:55%;height:100%;background:linear-gradient(90deg,var(--purple),var(--blue));animation:load 1.7s infinite}@keyframes load{from{transform:translateX(-110%)}to{transform:translateX(250%)}}
-h1{font-size:25px;margin:5px 0 3px}.sub{color:var(--muted);font-size:13px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}.iconbtn{background:#0b2552;border:1px solid #21478d;border-radius:13px;width:42px;height:42px}.pill{padding:8px 12px;border-radius:20px;background:#102b5d;color:#b8caff;font-size:12px}.gradient{background:linear-gradient(100deg,#ff4bc5,#9c49ff 45%,#20baff);box-shadow:0 8px 25px #7c3cff45}.btn{padding:14px 18px;border-radius:17px;font-weight:750;width:100%}.btn.small{width:auto;padding:10px 14px;border-radius:12px;font-size:12px}.ghost{background:#0a2048;border:1px solid #254c93}.card{background:linear-gradient(145deg,#09204aee,#061735ee);border:1px solid #173d7e;border-radius:20px;padding:15px;box-shadow:0 12px 30px #0004;margin:11px 0}.hero{padding:18px;border-radius:22px;background:linear-gradient(135deg,#102f68,#082052 55%,#24104f);border:1px solid #315ea9}.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#31c9ff,#9e45ff);font-weight:800}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.stat{padding:12px;border-radius:15px;background:#071c40;border:1px solid #173b79;text-align:center}.stat b{display:block;font-size:17px}.stat small{color:#8fa7d4;font-size:10px}.search{width:100%;padding:14px 15px;border-radius:15px;background:#071b3c;border:1px solid #214684;color:#fff;outline:none}.search:focus{border-color:#6a78ff}.list{display:flex;flex-direction:column;gap:9px}.listitem{padding:13px;border-radius:16px;background:#071a3a;border:1px solid #16386f}.rank{color:#b8c9ed;font-size:12px}.activeDot{color:var(--green);font-size:11px}.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(100%,480px);height:76px;background:#04122ceF;border-top:1px solid #214684;display:flex;justify-content:space-around;align-items:center;z-index:20;backdrop-filter:blur(15px)}.nav button{background:none;color:#7892c2;font-size:11px;display:flex;flex-direction:column;gap:5px;align-items:center}.nav button.on{color:#5dc9ff}.nav .ico{font-size:21px}
-.timer{width:245px;height:245px;border-radius:50%;margin:25px auto;display:grid;place-items:center;background:conic-gradient(from 0deg,#ff64ce,#9d4cff,#28c8ff,#ff64ce);padding:9px;box-shadow:0 0 45px #854cff55;animation:spinGlow 4s linear infinite}@keyframes spinGlow{50%{filter:hue-rotate(15deg);box-shadow:0 0 60px #22baff55}}.timerin{width:100%;height:100%;border-radius:50%;background:#061535;display:grid;place-items:center;text-align:center}.time{font-size:42px;font-weight:800}.quick{display:grid;grid-template-columns:1fr 1fr;gap:10px}.appRow{display:flex;align-items:center;gap:11px}.appIcon{width:35px;height:35px;border-radius:10px;display:grid;place-items:center;background:#102d62}.switch{margin-left:auto;width:45px;height:25px;border-radius:20px;background:#24497f;padding:3px}.switch i{display:block;width:19px;height:19px;border-radius:50%;background:#fff;transition:.2s}.switch.on{background:#7c48ff}.switch.on i{transform:translateX(20px)}.chart{height:125px;display:flex;align-items:end;gap:9px;padding:12px}.bar{flex:1;border-radius:8px 8px 2px 2px;background:linear-gradient(#38c8ff,#9d4cff);min-height:20px}.donut{width:135px;height:135px;border-radius:50%;background:conic-gradient(#ff63c7 0 42%,#37bfff 42% 64%,#a455ff 64% 76%,#314e8a 76%);padding:17px}.donut>div{height:100%;border-radius:50%;background:#071a3a;display:grid;place-items:center;text-align:center}.modal{position:fixed;inset:0;background:#0009;display:none;align-items:end;justify-content:center;z-index:50}.modal.show{display:flex}.sheet{width:min(100%,480px);background:#061532;border:1px solid #2b559a;border-radius:25px 25px 0 0;padding:20px;box-shadow:0 -20px 60px #0008}.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:#102a57;border:1px solid #3968b3;padding:12px 16px;border-radius:13px;opacity:0;pointer-events:none;transition:.25s;z-index:80}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-.onboardArt{width:230px;height:300px;border-radius:34px;background:radial-gradient(circle at 60% 35%,#ff5abf,#7048dc 28%,#062c6e 65%,#04102e);box-shadow:0 0 55px #814eff66;position:relative;overflow:hidden;margin-bottom:30px}.onboardArt:before,.onboardArt:after{content:"";position:absolute;border-radius:50%;filter:blur(2px)}.onboardArt:before{width:170px;height:170px;background:#ff8bce77;top:45px;right:-55px}.onboardArt:after{width:190px;height:190px;background:#1dc9ff66;bottom:-90px;left:-60px}.featureGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.feature{padding:14px;border-radius:16px;background:#081d40;border:1px solid #173c77}.feature b{display:block;margin-bottom:5px}.feature span{font-size:11px;color:#91a6d0}
-@media(min-width:700px){body{padding:20px}.phone{min-height:calc(100vh - 40px);border-radius:32px;overflow:hidden}.nav{bottom:20px;border-radius:0 0 32px 32px}}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#020817;
+  color:#fff;
+  min-height:100vh;
+}
+
+button,input{
+  font:inherit;
+}
+
+button{
+  border:0;
+  color:white;
+  cursor:pointer;
+}
+
+.app{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 20% 10%,#5330b8 0%,transparent 28%),
+    radial-gradient(circle at 90% 20%,#005ed4 0%,transparent 28%),
+    linear-gradient(145deg,#02081c,#071a42 55%,#020817);
+}
+
+.phone{
+  width:min(100%,480px);
+  min-height:100vh;
+  margin:auto;
+  position:relative;
+  background:
+    linear-gradient(180deg,rgba(4,14,40,.96),rgba(2,9,27,.99));
+  overflow:hidden;
+}
+
+/* ---------- SCREEN SYSTEM ---------- */
+
+.screen{
+  display:none;
+  min-height:100vh;
+  padding:22px 18px 105px;
+}
+
+.screen.active{
+  display:block;
+}
+
+.center{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:25px;
+}
+
+/* ---------- BRAND ---------- */
+
+.logo{
+  width:78px;
+  height:78px;
+  border-radius:24px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,#24b8ff,#8a4dff 55%,#ff4cc7);
+  font-size:38px;
+  font-weight:900;
+  box-shadow:0 0 35px #875cff88;
+  margin-bottom:18px;
+}
+
+.brand{
+  font-size:30px;
+  font-weight:900;
+}
+
+.brand span{
+  color:#55baff;
+}
+
+.tag{
+  color:#b9c8e8;
+  margin-top:7px;
+}
+
+/* ---------- SPLASH ---------- */
+
+.loader{
+  width:185px;
+  height:5px;
+  border-radius:10px;
+  background:#18345e;
+  margin-top:45px;
+  overflow:hidden;
+}
+
+.loader i{
+  display:block;
+  width:55%;
+  height:100%;
+  background:linear-gradient(90deg,#b64cff,#25b8ff);
+  animation:loading 1.7s infinite;
+}
+
+@keyframes loading{
+  from{transform:translateX(-110%)}
+  to{transform:translateX(250%)}
+}
+
+/* ---------- COMMON ---------- */
+
+h1{
+  font-size:25px;
+  margin:5px 0;
+}
+
+h2{
+  margin-bottom:5px;
+}
+
+.sub{
+  color:#91a4cf;
+  font-size:13px;
+}
+
+.top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:18px;
+}
+
+.iconbtn{
+  width:42px;
+  height:42px;
+  border-radius:13px;
+  background:#0b2552;
+  border:1px solid #21478d;
+}
+
+.card{
+  background:linear-gradient(145deg,#09204a,#061735);
+  border:1px solid #173d7e;
+  border-radius:20px;
+  padding:15px;
+  margin:11px 0;
+  box-shadow:0 12px 30px #0004;
+}
+
+.row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.btn{
+  width:100%;
+  padding:14px 18px;
+  border-radius:17px;
+  font-weight:800;
+  margin-top:9px;
+}
+
+.gradient{
+  background:linear-gradient(100deg,#ff4bc5,#9c49ff 45%,#20baff);
+  box-shadow:0 8px 25px #7c3cff45;
+}
+
+.ghost{
+  background:#0a2048;
+  border:1px solid #254c93;
+}
+
+.search{
+  width:100%;
+  padding:14px;
+  border-radius:15px;
+  background:#071b3c;
+  border:1px solid #214684;
+  color:#fff;
+  outline:none;
+  margin-top:10px;
+}
+
+.search:focus{
+  border-color:#6a78ff;
+}
+
+.pill{
+  display:inline-block;
+  padding:8px 12px;
+  border-radius:20px;
+  background:#102b5d;
+  color:#b8caff;
+  font-size:12px;
+}
+
+.avatar{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,#31c9ff,#9e45ff);
+  font-weight:800;
+}
+
+/* ---------- ONBOARDING ---------- */
+
+.onboardArt{
+  width:220px;
+  height:285px;
+  border-radius:34px;
+  background:
+    radial-gradient(circle at 60% 35%,#ff5abf,#7048dc 28%,#062c6e 65%,#04102e);
+  box-shadow:0 0 55px #814eff66;
+  margin-bottom:28px;
+}
+
+/* ---------- HOME ---------- */
+
+.hero{
+  padding:18px;
+  border-radius:22px;
+  background:linear-gradient(135deg,#102f68,#082052 55%,#24104f);
+  border:1px solid #315ea9;
+}
+
+.focusValue{
+  font-size:27px;
+  font-weight:900;
+  margin-top:4px;
+}
+
+.progress{
+  width:68px;
+  height:68px;
+  border-radius:50%;
+  background:conic-gradient(#ff63c7 0 54%,#2b467f 54%);
+  padding:7px;
+}
+
+.progress div{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  background:#071a3a;
+  display:grid;
+  place-items:center;
+  font-weight:800;
+}
+
+.quick{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.quick button{
+  padding:16px 8px;
+  border-radius:17px;
+  background:#0a2048;
+  border:1px solid #254c93;
+  font-weight:700;
+}
+
+.groupBox{
+  padding:13px;
+  border-radius:17px;
+  background:#071a3a;
+  border:1px solid #16386f;
+  margin-top:10px;
+}
+
+/* ---------- GROUPS ---------- */
+
+.list{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+
+.listitem{
+  padding:14px;
+  border-radius:16px;
+  background:#071a3a;
+  border:1px solid #16386f;
+}
+
+.activeDot{
+  color:#45e39a;
+  font-size:11px;
+}
+
+.rank{
+  color:#b8c9ed;
+  font-size:12px;
+}
+
+/* ---------- TIMER ---------- */
+
+.timerCircle{
+  width:245px;
+  height:245px;
+  border-radius:50%;
+  margin:28px auto;
+  display:grid;
+  place-items:center;
+  background:conic-gradient(#ff64ce,#9d4cff,#28c8ff,#ff64ce);
+  padding:9px;
+  box-shadow:0 0 45px #854cff55;
+}
+
+.timerInner{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  background:#061535;
+  display:grid;
+  place-items:center;
+  text-align:center;
+}
+
+.time{
+  font-size:43px;
+  font-weight:900;
+}
+
+/* ---------- STATS ---------- */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
+}
+
+.stat{
+  padding:12px;
+  border-radius:15px;
+  background:#071c40;
+  border:1px solid #173b79;
+  text-align:center;
+}
+
+.stat b{
+  display:block;
+  font-size:18px;
+}
+
+.stat small{
+  color:#8fa7d4;
+  font-size:10px;
+}
+
+.chart{
+  height:130px;
+  display:flex;
+  align-items:end;
+  gap:8px;
+  padding:12px 0;
+}
+
+.bar{
+  flex:1;
+  border-radius:8px 8px 2px 2px;
+  background:linear-gradient(#38c8ff,#9d4cff);
+}
+
+/* ---------- BLOCK APPS ---------- */
+
+.appRow{
+  display:flex;
+  align-items:center;
+  gap:11px;
+}
+
+.appIcon{
+  width:38px;
+  height:38px;
+  border-radius:10px;
+  background:#102d62;
+  display:grid;
+  place-items:center;
+}
+
+.switch{
+  margin-left:auto;
+  width:45px;
+  height:25px;
+  border-radius:20px;
+  background:#24497f;
+  padding:3px;
+}
+
+.switch i{
+  display:block;
+  width:19px;
+  height:19px;
+  border-radius:50%;
+  background:white;
+  transition:.2s;
+}
+
+.switch.on{
+  background:#7c48ff;
+}
+
+.switch.on i{
+  transform:translateX(20px);
+}
+
+/* ---------- NAV ---------- */
+
+.nav{
+  position:fixed;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(100%,480px);
+  height:76px;
+  background:#04122cee;
+  border-top:1px solid #214684;
+  display:none;
+  justify-content:space-around;
+  align-items:center;
+  z-index:100;
+  backdrop-filter:blur(15px);
+}
+
+.nav button{
+  background:none;
+  color:#7892c2;
+  font-size:11px;
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+  align-items:center;
+}
+
+.nav button.active{
+  color:#5dc9ff;
+}
+
+.nav .ico{
+  font-size:21px;
+}
+
+/* ---------- TOAST ---------- */
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:90px;
+  transform:translateX(-50%);
+  background:#102a57;
+  border:1px solid #3968b3;
+  padding:12px 17px;
+  border-radius:13px;
+  opacity:0;
+  pointer-events:none;
+  transition:.25s;
+  z-index:200;
+  white-space:nowrap;
+}
+
+.toast.show{
+  opacity:1;
+}
+
+/* ---------- MOBILE ---------- */
+
+@media(min-width:700px){
+  body{
+    padding:20px;
+  }
+
+  .phone{
+    min-height:calc(100vh - 40px);
+    border-radius:32px;
+  }
+
+  .nav{
+    bottom:20px;
+    border-radius:0 0 32px 32px;
+  }
+}
 </style>
 </head>
+
 <body>
-<div class="app"><main class="phone">
+
+<div class="app">
+<div class="phone">
+
+<!-- ================= SPLASH ================= -->
 
 <section id="splash" class="screen active center">
-  <div class="logo">F✦</div><div class="brand">Focus<span>Mate</span></div><div class="tag">Focus • Grow • Together</div>
-  <div class="loader"><i></i></div><p class="sub" style="margin-top:12px">Building a better you...</p>
+
+  <div class="logo">F✦</div>
+
+  <div class="brand">
+    Focus<span>Mate</span>
+  </div>
+
+  <div class="tag">
+    Focus • Grow • Together
+  </div>
+
+  <div class="loader">
+    <i></i>
+  </div>
+
+  <p class="sub" style="margin-top:12px">
+    Building a better you...
+  </p>
+
 </section>
+
+
+<!-- ================= ONBOARDING ================= -->
 
 <section id="onboard" class="screen center">
-  <div class="onboardArt"></div><h1>Focus Better<br><span style="color:#5dc9ff">Live Greater</span></h1>
-  <p class="sub">Block distractions, build good habits and achieve your goals with FocusMate.</p>
-  <div class="featureGrid" style="width:100%;margin:22px 0"><div class="feature">🎯 <b>Deep Focus</b><span>Pomodoro & custom sessions</span></div><div class="feature">👥 <b>Focus Together</b><span>Groups, presence & rankings</span></div><div class="feature">🚫 <b>Block Apps</b><span>Choose distracting apps</span></div><div class="feature">📊 <b>Track Growth</b><span>Stats, streaks & achievements</span></div></div>
-  <button class="btn gradient" onclick="go('login')">Get Started →</button>
+
+  <div class="onboardArt"></div>
+
+  <h1>
+    Focus Better<br>
+    <span style="color:#5dc9ff">
+      Live Greater
+    </span>
+  </h1>
+
+  <p class="sub" style="margin-top:8px">
+    Block distractions, build good habits
+    and achieve your goals with FocusMate.
+  </p>
+
+  <button class="btn gradient" onclick="go('login')">
+    Get Started →
+  </button>
+
 </section>
+
+
+<!-- ================= LOGIN ================= -->
 
 <section id="login" class="screen center">
-  <div class="logo" style="width:60px;height:60px;border-radius:18px;font-size:30px">F✦</div><div class="brand" style="font-size:26px">Focus<span>Mate</span></div>
-  <h1 style="margin-top:25px">Welcome Back</h1><p class="sub">Sign in to continue your focus journey</p>
-  <div style="width:100%;margin-top:20px"><input class="search" placeholder="✉ Email or Username" id="email"><input class="search" placeholder="🔒 Password" type="password" style="margin-top:10px"><label class="sub" style="display:block;text-align:left;margin:12px 4px"><input type="checkbox" checked> Remember me</label><button class="btn gradient" onclick="login()">Log In</button><p class="sub">or</p><button class="btn ghost" onclick="login()">🌈 Continue with Google</button><button class="btn ghost" style="margin-top:9px" onclick="login()"> Continue with Apple</button><p class="sub" style="margin-top:18px">Don't have an account? <b style="color:#5dc9ff" onclick="signup()">Sign Up</b></p></div>
+
+  <div class="logo"
+       style="width:60px;height:60px;border-radius:18px;font-size:29px">
+    F✦
+  </div>
+
+  <div class="brand" style="font-size:26px">
+    Focus<span>Mate</span>
+  </div>
+
+  <h1 style="margin-top:25px">
+    Welcome Back
+  </h1>
+
+  <p class="sub">
+    Sign in to continue your focus journey
+  </p>
+
+  <div style="width:100%;margin-top:20px">
+
+    <input
+      id="email"
+      class="search"
+      placeholder="✉ Email or Username">
+
+    <input
+      id="password"
+      class="search"
+      type="password"
+      placeholder="🔒 Password">
+
+    <label class="sub"
+           style="display:block;text-align:left;margin:12px 4px">
+      <input type="checkbox" checked>
+      Remember me
+    </label>
+
+    <button class="btn gradient"
+            onclick="login()">
+      Log In
+    </button>
+
+    <p class="sub" style="margin:14px">
+      or
+    </p>
+
+    <button class="btn ghost"
+            onclick="login()">
+      🌈 Continue with Google
+    </button>
+
+    <button class="btn ghost"
+            onclick="login()">
+       Continue with Apple
+    </button>
+
+    <p class="sub" style="margin-top:18px">
+      Don't have an account?
+      <b style="color:#5dc9ff"
+         onclick="go('signup')">
+        Sign Up
+      </b>
+    </p>
+
+  </div>
+
 </section>
+
+
+<!-- ================= SIGNUP ================= -->
 
 <section id="signup" class="screen">
- <div class="top"><button class="iconbtn" onclick="go('login')">←</button><div class="brand" style="font-size:20px">Focus<span>Mate</span></div><span></span></div>
- <div class="center" style="min-height:auto;padding:25px 5px"><div class="logo" style="width:58px;height:58px;font-size:28px">F✦</div><h1>Create Account</h1><p class="sub">Join FocusMate and start your focus journey</p>
- <input class="search" placeholder="Full Name" value="Noor Mohammad" style="margin-top:20px"><input class="search" placeholder="Email" value="noor@gmail.com" style="margin-top:10px"><input class="search" placeholder="Password" type="password" value="password" style="margin-top:10px"><input class="search" placeholder="Confirm Password" type="password" value="password" style="margin-top:10px"><label class="sub" style="display:block;text-align:left;margin:12px 4px"><input type="checkbox" checked> I agree to the Terms & Privacy Policy</label><button class="btn gradient" onclick="login()">Sign Up</button></div>
+
+  <div class="top">
+
+    <button class="iconbtn"
+            onclick="go('login')">
+      ←
+    </button>
+
+    <div class="brand" style="font-size:20px">
+      Focus<span>Mate</span>
+    </div>
+
+    <span></span>
+
+  </div>
+
+  <div style="text-align:center">
+
+    <div class="logo"
+         style="width:58px;height:58px;font-size:28px;margin:25px auto 15px">
+      F✦
+    </div>
+
+    <h1>Create Account</h1>
+
+    <p class="sub">
+      Join FocusMate and start your focus journey
+    </p>
+
+  </div>
+
+  <input class="search"
+         placeholder="Full Name"
+         value="Noor Mohammad">
+
+  <input class="search"
+         placeholder="Email">
+
+  <input class="search"
+         type="password"
+         placeholder="Password">
+
+  <input class="search"
+         type="password"
+         placeholder="Confirm Password">
+
+  <label class="sub"
+         style="display:block;margin:15px 3px">
+    <input type="checkbox">
+    I agree to the Terms & Privacy Policy
+  </label>
+
+  <button class="btn gradient"
+          onclick="login()">
+    Sign Up
+  </button>
+
+  <p class="sub"
+     style="text-align:center;margin-top:18px">
+    Already have an account?
+    <b style="color:#5dc9ff"
+       onclick="go('login')">
+      Log In
+    </b>
+  </p>
+
 </section>
+
+
+<!-- ================= HOME ================= -->
 
 <section id="home" class="screen">
- <div class="top"><div><h1>Hello, Noor 👋</h1><span class="sub">Stay focused, keep growing!</span></div><button class="iconbtn" onclick="go('notifications')">🔔</button></div>
- <div class="hero"><div class="row"><div><span class="sub">Today's Focus</span><h1>2h 15m</h1><span class="sub">of 4h goal</span></div><div class="donut" style="width:78px;height:78px;padding:10px"><div><b>54%</b></div></div></div></div>
- <div class="card"><div class="row"><span>🔥 Current Streak</span><b style="color:#ffc857">5 days</b></div><div class="sub" style="margin-top:7px">Keep going — you're building a habit!</div></div>
- <div class="row" style="margin-top:18px"><b>Your Group</b><button class="pill" onclick="go('groups')">View All →</button></div>
- <div class="card" onclick="groupDetail()"><div class="row"><div class="row"><div class="avatar">🎓</div><div><b>Study Warriors</b><div class="sub">32 members · 8 active now</div></div></div><span>›</span></div></div>
- <b>Quick Actions</b><div class="quick" style="margin-top:10px"><button class="card" onclick="go('focus')">⏱️<br><b>Focus Timer</b></button><button class="card" onclick="go('block')">🚫<br><b>Block Apps</b></button><button class="card" onclick="go('groups')">👥<br><b>Join Group</b></button><button class="card" onclick="go('sounds')">🎧<br><b>Focus Sounds</b></button></div>
+
+  <div class="top">
+
+    <div>
+      <h1>Hello, Noor 👋</h1>
+      <span class="sub">
+        Stay focused, keep growing!
+      </span>
+    </div>
+
+    <button class="iconbtn"
+            onclick="go('notifications')">
+      🔔
+    </button>
+
+  </div>
+
+
+  <div class="hero">
+
+    <div class="row">
+
+      <div>
+        <span class="sub">
+          Today's Focus
+        </span>
+
+        <div class="focusValue">
+          2h 15m
+        </div>
+
+        <span class="sub">
+          of 4h goal
+        </span>
+      </div>
+
+      <div class="progress">
+        <div>54%</div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="row">
+
+      <div>
+        🔥 <b>Current Streak</b>
+        <div class="sub">
+          Keep going — you're building a habit!
+        </div>
+      </div>
+
+      <b style="color:#ffc857">
+        5 days
+      </b>
+
+    </div>
+
+  </div>
+
+
+  <div class="top"
+       style="margin-top:20px;margin-bottom:7px">
+
+    <b>Your Group</b>
+
+    <button class="pill"
+            onclick="go('groups')">
+      View All →
+    </button>
+
+  </div>
+
+
+  <div class="groupBox"
+       onclick="go('group')">
+
+    <div class="row">
+
+      <div class="appRow">
+
+        <div class="appIcon">
+          🎯
+        </div>
+
+        <div>
+          <b>Study Warriors</b>
+
+          <div class="sub">
+            32 members • 8 active now
+          </div>
+        </div>
+
+      </div>
+
+      <span>›</span>
+
+    </div>
+
+  </div>
+
+
+  <h3 style="margin-top:20px">
+    Quick Actions
+  </h3>
+
+
+  <div class="quick">
+
+    <button onclick="go('focus')">
+      ⏱️<br>
+      Focus Timer
+    </button>
+
+    <button onclick="go('block')">
+      🚫<br>
+      Block Apps
+    </button>
+
+    <button onclick="go('groups')">
+      👥<br>
+      Join Group
+    </button>
+
+    <button onclick="go('sounds')">
+      🎧<br>
+      Focus Sounds
+    </button>
+
+  </div>
+
 </section>
+
+
+<!-- ================= GROUPS ================= -->
 
 <section id="groups" class="screen">
- <div class="top"><div><h1>Find Your Group</h1><span class="sub">Focus together, grow together</span></div><button class="iconbtn" onclick="go('home')">×</button></div>
- <input class="search" placeholder="⌕ Search groups..." oninput="filterGroups(this.value)">
- <div style="display:flex;gap:7px;margin:12px 0;overflow:auto"><span class="pill">All</span><span class="pill">Study</span><span class="pill">Work</span><span class="pill">Exam</span><span class="pill">Other</span></div>
- <div class="list" id="groupList">
-  <div class="listitem" data-name="Study Warriors" onclick="groupDetail()"><div class="row"><div class="row"><div class="avatar">🎓</div><div><b>Study Warriors</b><div class="sub">32 members · <span class="activeDot">8 active</span></div><span class="rank">You’re #5</span></div></div><span class="activeDot">●</span></div></div>
-  <div class="listitem" data-name="JEE Aspirants" onclick="groupDetail()"><div class="row"><div class="row"><div class="avatar">📚</div><div><b>JEE Aspirants</b><div class="sub">48 members · <span class="activeDot">12 active</span></div><span class="rank">You’re #12</span></div></div><span class="activeDot">●</span></div></div>
-  <div class="listitem" data-name="Class 10 Board" onclick="groupDetail()"><div class="row"><div class="row"><div class="avatar">📝</div><div><b>Class 10 Board</b><div class="sub">26 members · <span class="activeDot">6 active</span></div><span class="rank">You’re #7</span></div></div><span class="activeDot">●</span></div></div>
-  <div class="listitem" data-name="Productivity Kings" onclick="groupDetail()"><div class="row"><div class="row"><div class="avatar">👑</div><div><b>Productivity Kings</b><div class="sub">110 members · <span class="activeDot">19 active</span></div><span class="rank">You’re #17</span></div></div><span class="activeDot">●</span></div></div>
-  <div class="listitem" data-name="Freelancers Hub" onclick="groupDetail()"><div class="row"><div class="row"><div class="avatar">💻</div><div><b>Freelancers Hub</b><div class="sub">84 members · <span class="activeDot">15 active</span></div><span class="rank">You’re #6</span></div></div><span class="activeDot">●</span></div></div>
- </div>
+
+  <div class="top">
+
+    <div>
+      <h1>Find Your Group</h1>
+      <span class="sub">
+        Focus together, grow together
+      </span>
+    </div>
+
+    <button class="iconbtn"
+            onclick="go('home')">
+      ×
+    </button>
+
+  </div>
+
+
+  <input
+    id="groupSearch"
+    class="search"
+    placeholder="🔍 Search groups..."
+    oninput="filterGroups()">
+
+
+  <div class="list" id="groupList"
+       style="margin-top:15px">
+
+    <div class="listitem"
+         data-name="Study Warriors"
+         onclick="go('group')">
+
+      <div class="row">
+
+        <div>
+          <b>Study Warriors</b>
+
+          <div class="sub">
+            32 members • 8 active
+          </div>
+        </div>
+
+        <span class="activeDot">
+          ● Active
+        </span>
+
+      </div>
+
+      <div class="rank">
+        Your position: 4th
+      </div>
+
+    </div>
+
+
+    <div class="listitem"
+         data-name="JEE Aspirants">
+
+      <div class="row">
+
+        <div>
+          <b>JEE Aspirants</b>
+
+          <div class="sub">
+            8 members • 5 active
+          </div>
+        </div>
+
+        <span class="activeDot">
+          ● Active
+        </span>
+
+      </div>
+
+      <div class="rank">
+        Your position: 2nd
+      </div>
+
+    </div>
+
+
+    <div class="listitem"
+         data-name="Class 10 Board">
+
+      <div class="row">
+
+        <div>
+          <b>Class 10 Board</b>
+
+          <div class="sub">
+            15 members • 9 active
+          </div>
+        </div>
+
+        <span class="activeDot">
+          ● Active
+        </span>
+
+      </div>
+
+      <div class="rank">
+        Your position: 7th
+      </div>
+
+    </div>
+
+
+    <div class="listitem"
+         data-name="Productivity Kings">
+
+      <div class="row">
+
+        <div>
+          <b>Productivity Kings</b>
+
+          <div class="sub">
+            10 members • 6 active
+          </div>
+        </div>
+
+        <span class="activeDot">
+          ● Active
+        </span>
+
+      </div>
+
+      <div class="rank">
+        Your position: 3rd
+      </div>
+
+    </div>
+
+  </div>
+
 </section>
+
+
+<!-- ================= GROUP DETAIL ================= -->
 
 <section id="group" class="screen">
- <div class="top"><button class="iconbtn" onclick="go('groups')">←</button><h1>Study Warriors</h1><button class="iconbtn" onclick="toast('Group options')">⋯</button></div>
- <div class="card"><div class="row"><div><b>Study Warriors</b><div class="sub">32 members · 8 active now</div></div><span class="pill">#5 Your Rank</span></div></div>
- <div class="stats"><div class="stat"><b>8</b><small>Active Now</small></div><div class="stat"><b>32</b><small>Total Members</small></div><div class="stat"><b>#5</b><small>Your Rank</small></div></div>
- <h3>Active Members (8)</h3><div class="list">
-  <div class="listitem"><div class="row"><div class="row"><div class="avatar">N</div><div><b>Noor (You)</b><div class="sub">42m · #5</div></div></div><span>👑</span></div></div>
-  <div class="listitem"><div class="row"><div class="row"><div class="avatar">A</div><div><b>Ayaan</b><div class="sub">38m · #6</div></div></div><span>🎯</span></div></div>
-  <div class="listitem"><div class="row"><div class="row"><div class="avatar">S</div><div><b>Sara</b><div class="sub">32m · #7</div></div></div><span>🎯</span></div></div>
-  <div class="listitem"><div class="row"><div class="row"><div class="avatar">Z</div><div><b>Zaid</b><div class="sub">31m · #8</div></div></div><span>🎯</span></div></div>
- </div><button class="btn gradient" style="margin-top:14px" onclick="toast('Leaderboard opened')">View Full Leaderboard</button>
+
+  <div class="top">
+
+    <button class="iconbtn"
+            onclick="go('groups')">
+      ←
+    </button>
+
+    <h1>Study Warriors</h1>
+
+    <button class="iconbtn">
+      ⋮
+    </button>
+
+  </div>
+
+
+  <div class="hero">
+
+    <h2>Study Warriors 🎯</h2>
+
+    <p class="sub">
+      32 members • 8 focusing now
+    </p>
+
+    <div class="stats"
+         style="margin-top:15px">
+
+      <div class="stat">
+        <b>8</b>
+        <small>Focusing</small>
+      </div>
+
+      <div class="stat">
+        <b>#4</b>
+        <small>Your Rank</small>
+      </div>
+
+      <div class="stat">
+        <b>12h</b>
+        <small>Group Time</small>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <h3 style="margin-top:22px">
+    Members Focusing
+  </h3>
+
+
+  <div class="list"
+       style="margin-top:10px">
+
+    <div class="listitem">
+      🟢 Ayaan
+      <span style="float:right">
+        48m
+      </span>
+    </div>
+
+    <div class="listitem">
+      🟢 Rahul
+      <span style="float:right">
+        32m
+      </span>
+    </div>
+
+    <div class="listitem">
+      🟢 Arjun
+      <span style="float:right">
+        25m
+      </span>
+    </div>
+
+  </div>
+
+
+  <button class="btn gradient"
+          onclick="go('focus')">
+    Start Focus Session
+  </button>
+
 </section>
+
+
+<!-- ================= FOCUS TIMER ================= -->
 
 <section id="focus" class="screen">
- <div class="top"><button class="iconbtn" onclick="go('home')">←</button><h1>Focus Timer</h1><button class="iconbtn" onclick="go('sounds')">🎧</button></div>
- <div style="display:flex;gap:7px;justify-content:center"><span class="pill">Pomodoro</span><span class="pill">Custom</span><span class="pill">Stopwatch</span></div>
- <div class="timer"><div class="timerin"><div><div class="time" id="time">25:00</div><div class="sub">Focus Time</div></div></div></div>
- <div class="row"><span class="sub">Session 1 / 4</span><span class="pill" onclick="go('sounds')">🎵 Lo-fi Beats</span></div>
- <div class="quick" style="margin-top:15px"><button class="btn gradient" onclick="toggleTimer()" id="timerBtn">▶ Start</button><button class="btn ghost" onclick="resetTimer()">↻ Reset</button></div>
- <button class="btn ghost" style="margin-top:10px" onclick="go('block')">🚫 Block Apps</button>
+
+  <div class="top">
+
+    <button class="iconbtn"
+            onclick="go('home')">
+      ←
+    </button>
+
+    <h1>Focus Timer</h1>
+
+    <span></span>
+
+  </div>
+
+
+  <div class="timerCircle">
+
+    <div class="timerInner">
+
+      <div>
+
+        <div class="time"
+             id="time">
+          25:00
+        </div>
+
+        <div class="sub">
+          Focus Session
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="quick">
+
+    <button class="gradient"
+            id="timerBtn"
+            onclick="toggleTimer()">
+      ▶ Start
+    </button>
+
+    <button onclick="resetTimer()">
+      ↻ Reset
+    </button>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="row">
+
+      <span>🎧 Focus Sounds</span>
+
+      <button class="pill"
+              onclick="go('sounds')">
+        Choose
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="row">
+
+      <span>🚫 Block distracting apps</span>
+
+      <button class="pill"
+              onclick="go('block')">
+        Setup
+      </button>
+
+    </div>
+
+  </div>
+
 </section>
+
+
+<!-- ================= BLOCK APPS ================= -->
 
 <section id="block" class="screen">
- <div class="top"><button class="iconbtn" onclick="go('focus')">←</button><div><h1>Block Apps</h1><span class="sub">Choose apps for focus mode</span></div><span></span></div>
- <input class="search" placeholder="⌕ Search apps..."><div style="display:flex;gap:7px;margin:12px 0"><span class="pill">Popular</span><span class="pill">All Apps</span></div>
- <div class="list">
-  <div class="listitem"><div class="appRow"><div class="appIcon">📸</div><b>Instagram</b><div class="switch on" onclick="this.classList.toggle('on')"><i></i></div></div></div>
-  <div class="listitem"><div class="appRow"><div class="appIcon">▶️</div><b>YouTube</b><div class="switch on" onclick="this.classList.toggle('on')"><i></i></div></div></div>
-  <div class="listitem"><div class="appRow"><div class="appIcon">🎵</div><b>TikTok</b><div class="switch on" onclick="this.classList.toggle('on')"><i></i></div></div></div>
-  <div class="listitem"><div class="appRow"><div class="appIcon">f</div><b>Facebook</b><div class="switch on" onclick="this.classList.toggle('on')"><i></i></div></div></div>
-  <div class="listitem"><div class="appRow"><div class="appIcon">💬</div><b>WhatsApp</b><div class="switch" onclick="this.classList.toggle('on')"><i></i></div></div></div>
-  <div class="listitem"><div class="appRow"><div class="appIcon">🌐</div><b>Chrome</b><div class="switch on" onclick="this.classList.toggle('on')"><i></i></div></div></div>
-  <div class="listitem"><div class="appRow"><div class="appIcon">🎮</div><b>Games</b><div class="switch" onclick="this.classList.toggle('on')"><i></i></div></div></div>
- </div><button class="btn gradient" style="margin-top:14px" onclick="toast('Blocked app list saved')">Save</button>
+
+  <div class="top">
+
+    <button class="iconbtn"
+            onclick="go('home')">
+      ←
+    </button>
+
+    <h1>Block Apps</h1>
+
+    <span></span>
+
+  </div>
+
+
+  <p class="sub">
+    Choose apps you want to block during Focus sessions.
+  </p>
+
+
+  <div class="list"
+       style="margin-top:18px">
+
+    <div class="listitem">
+
+      <div class="appRow">
+
+        <div class="appIcon">▶️</div>
+
+        <b>YouTube</b>
+
+        <div class="switch on"
+             onclick="this.classList.toggle('on')">
+          <i></i>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="listitem">
+
+      <div class="appRow">
+
+        <div class="appIcon">📸</div>
+
+        <b>Instagram</b>
+
+        <div class="switch on"
+             onclick="this.classList.toggle('on')">
+          <i></i>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="listitem">
+
+      <div class="appRow">
+
+        <div class="appIcon">🌐</div>
+
+        <b>Chrome</b>
+
+        <div class="switch on"
+             onclick="this.classList.toggle('on')">
+          <i></i>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="listitem">
+
+      <div class="appRow">
+
+        <div class="appIcon">🎮</div>
+
+        <b>Games</b>
+
+        <div class="switch"
+             onclick="this.classList.toggle('on')">
+          <i></i>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <button class="btn gradient"
+          onclick="toast('Blocked app list saved')">
+    Save
+  </button>
+
 </section>
 
-<section id="running" class="screen">
- <div class="top"><span></span><h1>Focus Mode</h1><button class="iconbtn" onclick="go('home')">×</button></div>
- <div class="timer"><div class="timerin"><div><div class="time">25:00</div><div class="sub">Remaining</div></div></div></div>
- <p style="text-align:center;color:#8fa6d3">Stay focused 💜</p>
- <div class="quick"><button class="btn gradient" onclick="toast('Focus paused')">Ⅱ Pause</button><button class="btn ghost" onclick="go('home')">◉ Reset</button></div>
- <div class="card"><div class="row"><span>🎧 Lo-fi Beats</span><span class="activeDot">Now playing</span></div></div>
-</section>
 
-<section id="stats" class="screen">
- <div class="top"><div><h1>Your Progress</h1><span class="sub">Small steps, big results</span></div><span class="pill">This Week</span></div>
- <div class="card"><div class="row"><div><span class="sub">Focus Time</span><h1>12h 45m</h1></div><span style="color:#45e39a">+48h last week</span></div><div class="chart"><i class="bar" style="height:48%"></i><i class="bar" style="height:66%"></i><i class="bar" style="height:35%"></i><i class="bar" style="height:82%"></i><i class="bar" style="height:60%"></i><i class="bar" style="height:95%"></i><i class="bar" style="height:70%"></i></div><div class="row sub"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div></div>
- <div class="card"><div class="row"><div class="donut"><div><b>12h</b><small>focus</small></div></div><div style="font-size:12px;line-height:2"><div>🔵 Social Media 42%</div><div>🟣 YouTube 22%</div><div>🟪 Games 12%</div><div>⚪ Others 24%</div></div></div></div>
- <div class="stats"><div class="stat"><b>5</b><small>Day Streak</small></div><div class="stat"><b>38</b><small>Sessions</small></div><div class="stat"><b>#5</b><small>Group Rank</small></div></div>
-</section>
+<!-- ================= SOUNDS ================= -->
 
 <section id="sounds" class="screen">
- <div class="top"><button class="iconbtn" onclick="go('focus')">←</button><h1>Focus Sounds</h1><span></span></div>
- <div style="display:flex;gap:7px;overflow:auto;margin-bottom:13px"><span class="pill">Nature</span><span class="pill">Lo-fi</span><span class="pill">White Noise</span></div>
- <div class="list">
-  <div class="listitem" onclick="playSound('Rain')">🌧️ Rain <span style="float:right">▶</span></div>
-  <div class="listitem" onclick="playSound('Forest')">🌲 Forest <span style="float:right">▶</span></div>
-  <div class="listitem" onclick="playSound('Ocean')">🌊 Ocean <span style="float:right">▶</span></div>
-  <div class="listitem" onclick="playSound('Night Sky')">🌌 Night Sky <span style="float:right">▶</span></div>
-  <div class="listitem" onclick="playSound('Cafe Ambience')">☕ Café Ambience <span style="float:right">▶</span></div>
- </div><div class="card"><b>Sound effects</b><div class="sub" style="margin-top:5px">Subtle feedback is enabled for buttons and saves.</div></div>
+
+  <div class="top">
+
+    <button class="iconbtn"
+            onclick="go('focus')">
+      ←
+    </button>
+
+    <h1>Focus Sounds</h1>
+
+    <span></span>
+
+  </div>
+
+
+  <div class="list">
+
+    <div class="listitem"
+         onclick="sound('Rain')">
+      🌧️ Rain
+      <span style="float:right">▶</span>
+    </div>
+
+    <div class="listitem"
+         onclick="sound('Forest')">
+      🌲 Forest
+      <span style="float:right">▶</span>
+    </div>
+
+    <div class="listitem"
+         onclick="sound('Ocean')">
+      🌊 Ocean
+      <span style="float:right">▶</span>
+    </div>
+
+    <div class="listitem"
+         onclick="sound('Night Sky')">
+      🌌 Night Sky
+      <span style="float:right">▶</span>
+    </div>
+
+    <div class="listitem"
+         onclick="sound('Cafe Ambience')">
+      ☕ Café Ambience
+      <span style="float:right">▶</span>
+    </div>
+
+  </div>
+
 </section>
+
+
+<!-- ================= STATS ================= -->
+
+<section id="stats" class="screen">
+
+  <div class="top">
+
+    <div>
+      <h1>Your Progress</h1>
+      <span class="sub">
+        Small steps, big results
+      </span>
+    </div>
+
+    <span class="pill">
+      This Week
+    </span>
+
+  </div>
+
+
+  <div class="card">
+
+    <span class="sub">
+      Focus Time
+    </span>
+
+    <h1>
+      12h 45m
+    </h1>
+
+    <div class="chart">
+
+      <i class="bar" style="height:45%"></i>
+      <i class="bar" style="height:65%"></i>
+      <i class="bar" style="height:35%"></i>
+      <i class="bar" style="height:80%"></i>
+      <i class="bar" style="height:60%"></i>
+      <i class="bar" style="height:95%"></i>
+      <i class="bar" style="height:70%"></i>
+
+    </div>
+
+  </div>
+
+
+  <div class="stats">
+
+    <div class="stat">
+      <b>5</b>
+      <small>Day Streak</small>
+    </div>
+
+    <div class="stat">
+      <b>38</b>
+      <small>Sessions</small>
+    </div>
+
+    <div class="stat">
+      <b>#5</b>
+      <small>Group Rank</small>
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <h3>Focus Breakdown</h3>
+
+    <p style="margin-top:12px">
+      🔵 Social Media — 42%
+    </p>
+
+    <p style="margin-top:8px">
+      🟣 YouTube — 22%
+    </p>
+
+    <p style="margin-top:8px">
+      🟪 Games — 12%
+    </p>
+
+    <p style="margin-top:8px">
+      ⚪ Others — 24%
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- ================= NOTIFICATIONS ================= -->
 
 <section id="notifications" class="screen">
- <div class="top"><button class="iconbtn" onclick="go('home')">←</button><h1>Notifications</h1><span></span></div>
- <div class="list"><div class="listitem">👥 <b>Group Update</b><div class="sub">You joined Study Warriors · 2m ago</div></div><div class="listitem">🔥 <b>Streak Milestone</b><div class="sub">You've maintained a 5 day streak! · 1h ago</div></div><div class="listitem">🎯 <b>Group Reminder</b><div class="sub">Ayaan started a new session · 3h ago</div></div><div class="listitem">⏰ <b>Focus Reminder</b><div class="sub">Time for your focus session · 5h ago</div></div></div>
+
+  <div class="top">
+
+    <button class="iconbtn"
+            onclick="go('home')">
+      ←
+    </button>
+
+    <h1>Notifications</h1>
+
+    <span></span>
+
+  </div>
+
+
+  <div class="list">
+
+    <div class="listitem">
+      👥 <b>Group Update</b>
+      <div class="sub">
+        You joined Study Warriors
+      </div>
+    </div>
+
+    <div class="listitem">
+      🔥 <b>Streak Milestone</b>
+      <div class="sub">
+        You've maintained a 5 day streak!
+      </div>
+    </div>
+
+    <div class="listitem">
+      🎯 <b>Group Reminder</b>
+      <div class="sub">
+        A member started a new session.
+      </div>
+    </div>
+
+  </div>
+
 </section>
 
-<section id="achievement" class="screen center">
- <div style="font-size:90px;filter:drop-shadow(0 0 30px #ffc85788)">🏆</div><h1>Achievement Unlocked!</h1><p class="sub">5 Day Streak</p><p class="sub">That's awesome! Keep it up!</p><button class="btn gradient" style="margin-top:20px" onclick="go('home')">Great!</button>
-</section>
 
-<section id="invite" class="screen center">
- <div class="logo">F✦</div><h1>Group Invite</h1><div class="card" style="width:100%"><h2>Study Warriors</h2><p class="sub">32 members · 8 active now</p><p>Join this group and grow together!</p><button class="btn gradient" onclick="toast('Joined Study Warriors');go('group')">Join Group</button><button class="btn ghost" style="margin-top:10px" onclick="go('home')">Maybe Later</button></div>
-</section>
+<!-- ================= PROFILE ================= -->
 
 <section id="profile" class="screen">
- <div class="top"><div><h1>Profile</h1><span class="sub">Your focus journey</span></div><button class="iconbtn" onclick="go('settings')">⚙</button></div>
- <div class="card" style="text-align:center"><div class="avatar" style="margin:auto;width:70px;height:70px;font-size:25px">N</div><h2 style="margin:10px 0 2px">Noor Mohammad</h2><div class="sub">@noor_123</div><div style="margin-top:15px"><span class="pill">🔥 5 day streak</span></div></div>
- <div class="stats"><div class="stat"><b>12h</b><small>Focus Time</small></div><div class="stat"><b>38</b><small>Sessions</small></div><div class="stat"><b>#5</b><small>Group Rank</small></div></div>
- <button class="btn gradient" style="margin-top:15px" onclick="go('achievement')">🏆 View Achievements</button>
+
+  <div class="top">
+
+    <div>
+      <h1>Profile</h1>
+      <span class="sub">
+        Your focus journey
+      </span>
+    </div>
+
+    <button class="iconbtn"
+            onclick="go('settings')">
+      ⚙
+    </button>
+
+  </div>
+
+
+  <div class="card"
+       style="text-align:center">
+
+    <div class="avatar"
+         style="width:70px;height:70px;margin:auto;font-size:25px">
+      N
+    </div>
+
+    <h2 style="margin-top:10px">
+      FocusMate User
+    </h2>
+
+    <div class="sub">
+      Focus journey member
+    </div>
+
+  </div>
+
+
+  <div class="stats">
+
+    <div class="stat">
+      <b>12h</b>
+      <small>Focus Time</small>
+    </div>
+
+    <div class="stat">
+      <b>38</b>
+      <small>Sessions</small>
+    </div>
+
+    <div class="stat">
+      <b>#5</b>
+      <small>Group Rank</small>
+    </div>
+
+  </div>
+
+
+  <button class="btn gradient"
+          onclick="toast('Achievement unlocked!')">
+    🏆 View Achievements
+  </button>
+
 </section>
+
+
+<!-- ================= SETTINGS ================= -->
 
 <section id="settings" class="screen">
- <div class="top"><button class="iconbtn" onclick="go('profile')">←</button><h1>Settings</h1><span></span></div>
- <div class="card"><h3>App Settings</h3><div class="list">
-  <div class="listitem">🌙 Dark Mode <span class="switch on" style="float:right"><i></i></span></div>
-  <div class="listitem">🔔 Notifications <span class="switch on" style="float:right"><i></i></span></div>
-  <div class="listitem">🎵 Sound Effects <span class="switch on" style="float:right"><i></i></span></div>
-  <div class="listitem">📳 Vibration <span class="switch on" style="float:right"><i></i></span></div>
- </div></div>
- <div class="card"><h3>Privacy & Security</h3><div class="list"><div class="listitem" onclick="toast('Privacy settings')">🛡️ Data & Privacy ›</div><div class="listitem" onclick="toast('Account connections')">🔗 Connected Accounts ›</div></div></div>
- <div class="card"><h3>About</h3><div class="list"><div class="listitem">Version 1.0.0</div><div class="listitem" onclick="toast('Share link copied')">↗ Share App</div><div class="listitem">Built by <b>Noor Mohammad</b> · @yourhandle</div></div></div>
+
+  <div class="top">
+
+    <button class="iconbtn"
+            onclick="go('profile')">
+      ←
+    </button>
+
+    <h1>Settings</h1>
+
+    <span></span>
+
+  </div>
+
+
+  <div class="card">
+
+    <h3>App Settings</h3>
+
+    <div class="list"
+         style="margin-top:12px">
+
+      <div class="listitem">
+        🌙 Dark Mode
+        <span class="switch on"
+              style="float:right">
+          <i></i>
+        </span>
+      </div>
+
+      <div class="listitem">
+        🔔 Notifications
+        <span class="switch on"
+              style="float:right">
+          <i></i>
+        </span>
+      </div>
+
+      <div class="listitem">
+        🎵 Sound Effects
+        <span class="switch on"
+              style="float:right">
+          <i></i>
+        </span>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <h3>Privacy & Security</h3>
+
+    <div class="list"
+         style="margin-top:12px">
+
+      <div class="listitem"
+           onclick="toast('Privacy settings')">
+        🛡️ Data & Privacy
+      </div>
+
+      <div class="listitem"
+           onclick="toast('Connected accounts')">
+        🔗 Connected Accounts
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <h3>About FocusMate</h3>
+
+    <p class="sub"
+       style="margin-top:8px">
+      Version 1.0.0
+    </p>
+
+    <p class="sub"
+       style="margin-top:8px">
+      Focus • Grow • Together
+    </p>
+
+  </div>
+
 </section>
 
-<nav class="nav" id="nav" style="display:none">
- <button onclick="go('home')" data-s="home"><span class="ico">⌂</span>Home</button>
- <button onclick="go('groups')" data-s="groups"><span class="ico">♟</span>Groups</button>
- <button onclick="go('stats')" data-s="stats"><span class="ico">▥</span>Stats</button>
- <button onclick="go('profile')" data-s="profile"><span class="ico">♙</span>Profile</button>
+
+<!-- ================= BOTTOM NAV ================= -->
+
+<nav class="nav" id="nav">
+
+  <button onclick="go('home')"
+          data-screen="home">
+
+    <span class="ico">⌂</span>
+    Home
+
+  </button>
+
+
+  <button onclick="go('groups')"
+          data-screen="groups">
+
+    <span class="ico">♟</span>
+    Groups
+
+  </button>
+
+
+  <button onclick="go('stats')"
+          data-screen="stats">
+
+    <span class="ico">▥</span>
+    Stats
+
+  </button>
+
+
+  <button onclick="go('profile')"
+          data-screen="profile">
+
+    <span class="ico">♙</span>
+    Profile
+
+  </button>
+
 </nav>
-<div class="toast" id="toast"></div>
-<div class="modal" id="modal"><div class="sheet"><div class="row"><h2 id="modalTitle">FocusMate</h2><button class="iconbtn" onclick="closeModal()">×</button></div><p id="modalText" class="sub"></p></div></div>
+
+
+<div class="toast"
+     id="toast">
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
 
 <script>
-let current='splash', timer=null, seconds=1500;
-const navScreens=['home','groups','stats','profile'];
-function go(id){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');current=id;document.getElementById('nav').style.display=navScreens.includes(id)?'flex':'none';document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('on',b.dataset.s===id));beep(720,.045)}
-setTimeout(()=>go('onboard'),2100);
-function login(){toast('Demo login successful');setTimeout(()=>go('home'),500)}
-function signup(){go('signup')}
-function groupDetail(){go('group')}
-function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('show');beep(780,.06);setTimeout(()=>e.classList.remove('show'),1800)}
-function beep(freq=720,dur=.06){try{const C=window.AudioContext||window.webkitAudioContext;if(!C)return;const c=new C(),o=c.createOscillator(),g=c.createGain();o.frequency.value=freq;o.type='sine';g.gain.value=.025;o.connect(g);g.connect(c.destination);o.start();g.gain.exponentialRampToValueAtTime(.0001,c.currentTime+dur);o.stop(c.currentTime+dur)}catch(e){}}
-function toggleTimer(){if(timer){clearInterval(timer);timer=null;document.getElementById('timerBtn').textContent='▶ Start';toast('Focus paused');return}timer=setInterval(()=>{if(seconds>0)seconds--;renderTime();},1000);document.getElementById('timerBtn').textContent='Ⅱ Pause';toast('Focus session started')}
-function resetTimer(){clearInterval(timer);timer=null;seconds=1500;renderTime();document.getElementById('timerBtn').textContent='▶ Start';toast('Timer reset')}
-function renderTime(){let m=Math.floor(seconds/60),s=seconds%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')}
-function filterGroups(q){document.querySelectorAll('#groupList .listitem').forEach(x=>x.style.display=x.dataset.name.toLowerCase().includes(q.toLowerCase())?'block':'none')}
-function playSound(name){toast(name+' selected');}
-function closeModal(){document.getElementById('modal').classList.remove('show')}
+
+let currentScreen = "splash";
+
+let timer = null;
+
+let seconds = 1500;
+
+
+/* ---------- SCREEN NAVIGATION ---------- */
+
+function go(id){
+
+  const target = document.getElementById(id);
+
+  if(!target){
+    return;
+  }
+
+
+  /* Hide EVERY screen first */
+
+  document.querySelectorAll(".screen").forEach(function(screen){
+
+    screen.classList.remove("active");
+
+    screen.style.display = "none";
+
+  });
+
+
+  /* Show ONLY selected screen */
+
+  target.style.display = "block";
+
+  target.classList.add("active");
+
+
+  currentScreen = id;
+
+
+  /* Bottom navigation */
+
+  const nav = document.getElementById("nav");
+
+  const navScreens = [
+    "home",
+    "groups",
+    "stats",
+    "profile"
+  ];
+
+
+  if(navScreens.includes(id)){
+
+    nav.style.display = "flex";
+
+  }else{
+
+    nav.style.display = "none";
+
+  }
+
+
+  /* Active nav button */
+
+  document.querySelectorAll(".nav button").forEach(function(button){
+
+    button.classList.remove("active");
+
+    if(button.dataset.screen === id){
+
+      button.classList.add("active");
+
+    }
+
+  });
+
+
+  window.scrollTo(0,0);
+
+}
+
+
+/* ---------- LOGIN ---------- */
+
+function login(){
+
+  toast("Demo login successful");
+
+  setTimeout(function(){
+
+    go("home");
+
+  },400);
+
+}
+
+
+/* ---------- TOAST ---------- */
+
+function toast(message){
+
+  const box = document.getElementById("toast");
+
+  box.textContent = message;
+
+  box.classList.add("show");
+
+  setTimeout(function(){
+
+    box.classList.remove("show");
+
+  },1800);
+
+}
+
+
+/* ---------- TIMER ---------- */
+
+function toggleTimer(){
+
+  const button =
+    document.getElementById("timerBtn");
+
+
+  if(timer){
+
+    clearInterval(timer);
+
+    timer = null;
+
+    button.textContent = "▶ Start";
+
+    toast("Focus paused");
+
+    return;
+
+  }
+
+
+  timer = setInterval(function(){
+
+    if(seconds > 0){
+
+      seconds--;
+
+      renderTime();
+
+    }else{
+
+      clearInterval(timer);
+
+      timer = null;
+
+      button.textContent = "▶ Start";
+
+      toast("Focus session completed!");
+
+    }
+
+  },1000);
+
+
+  button.textContent = "Ⅱ Pause";
+
+  toast("Focus session started");
+
+}
+
+
+function resetTimer(){
+
+  clearInterval(timer);
+
+  timer = null;
+
+  seconds = 1500;
+
+  renderTime();
+
+  document.getElementById("timerBtn").textContent =
+    "▶ Start";
+
+  toast("Timer reset");
+
+}
+
+
+function renderTime(){
+
+  const minutes =
+    Math.floor(seconds / 60);
+
+  const secs =
+    seconds % 60;
+
+
+  document.getElementById("time").textContent =
+    String(minutes).padStart(2,"0")
+    + ":"
+    + String(secs).padStart(2,"0");
+
+}
+
+
+/* ---------- GROUP SEARCH ---------- */
+
+function filterGroups(){
+
+  const search =
+    document.getElementById("groupSearch");
+
+  const value =
+    search.value.toLowerCase();
+
+
+  document
+    .querySelectorAll("#groupList .listitem")
+    .forEach(function(item){
+
+      const name =
+        item.dataset.name.toLowerCase();
+
+      if(name.includes(value)){
+
+        item.style.display = "block";
+
+      }else{
+
+        item.style.display = "none";
+
+      }
+
+    });
+
+}
+
+
+/* ---------- SOUNDS ---------- */
+
+function sound(name){
+
+  toast(name + " selected");
+
+}
+
+
+/* ---------- START APP ---------- */
+
+/*
+  IMPORTANT:
+  First hide every screen.
+  Then show only splash.
+*/
+
+document
+  .querySelectorAll(".screen")
+  .forEach(function(screen){
+
+    screen.style.display = "none";
+
+  });
+
+
+document.getElementById("splash").style.display =
+  "flex";
+
+
+/*
+  After 2.2 seconds:
+  Splash -> Onboarding
+*/
+
+setTimeout(function(){
+
+  go("onboard");
+
+},2200);
+
 </script>
-</main></div>
-</body></html>
+
+</div>
+</div>
+
+</body>
+</html>
